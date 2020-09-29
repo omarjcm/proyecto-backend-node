@@ -10,7 +10,12 @@ module.exports = function(injectedStore) {
         return store.list( TABLA )
     }
 
+    function get(idUser) {
+        return store.get( TABLA, idUser )
+    }
+
     return {
         list,
+        get, 
     }
 }

@@ -1,26 +1,26 @@
 const db = {
     'user': [
-        { id: 1, name: 'Carlos' },
+        { id: 1, name: 'Guillermo Omar' },
     ]
 }
 
-function list(tabla) {
+async function list(tabla) {
     return db[tabla]
 }
 
-function get(tabla, id) {
-    let colData = list(tabla)
+async function get(tabla, id) {
+    let colData = await list(tabla)
     // filter regresa todos los que cumplan con esa condición.
-    //    return colData.filter(item => item.id == id)[0] || null
+    return colData.filter((item) => item.id == id)[0] || null
     // find retorna el primero que cumpla con esa condición.
-    return colData.find(item => item.id == id)[0] || null
+    //return colData.find(item => item.id == id)[0] || null
 }
 
-function upsert(tabla, data) {
+async function upsert(tabla, data) {
     db[tabla].push(data)
 }
 
-function remove(tabla, id) {
+async function remove(tabla, id) {
     return true
 }
 
