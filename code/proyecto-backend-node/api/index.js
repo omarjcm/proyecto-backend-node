@@ -8,10 +8,10 @@ const user = require('./components/user/network')
 const app = express()
 app.use( bodyParser.json() )
 
-const swaggerDoc = require('./swagger.json')
-
 // Router
 app.use('/api/user', user)
+
+const swaggerDoc = require('./swagger.json')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 
 app.listen( config.api.port, () => {
