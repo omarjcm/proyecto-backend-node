@@ -10,7 +10,7 @@ const router = express.Router()
 router.get('/', list)
 router.get('/:id', get)
 router.post('/', upsert)
-router.put('/', upsert)
+router.put('/', secure('update'), upsert)
 
 // Internal Functions
 function list(req, res, next) {

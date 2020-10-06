@@ -16,7 +16,7 @@ const check = {
         const decoded = decodeHeader(req)
         console.log( decoded )
 
-        if (decoded.id != owner) {
+        if (decoded.id !== owner) {
             throw new Error('No puedes hacer esto.')
         }
     }
