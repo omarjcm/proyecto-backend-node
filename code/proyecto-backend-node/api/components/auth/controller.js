@@ -7,7 +7,7 @@ const TABLA = 'auth'
 module.exports = function(injectedStore) {
     let store = injectedStore
     if (!store) {
-        store = require('../../../store/test') 
+        store = require('../../../store/mysql') 
     }
 
     async function login(username, password) {
@@ -18,7 +18,7 @@ module.exports = function(injectedStore) {
                 if (sonIguales) {
                     // Generar token
                     // return data
-                    return auth.sign( data )
+                    return auth.sign( { data } )
                 } else {
                     throw new Error('Información inválida.')
                 }        
@@ -33,7 +33,7 @@ module.exports = function(injectedStore) {
             authData.username = data.username
         }
         if (data.password) {
-            authData.password = await bcrypt.hash( data.password, 10 )
+            authData.password = await bcrypt.hash( data.password, 5 )
         }
         return store.upsert(TABLA, authData)
     }

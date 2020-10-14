@@ -6,7 +6,7 @@ const TABLA = 'user'
 module.exports = function(injectedStore) {
     let store = injectedStore
     if (!store) {
-        store = require('../../../store/test') 
+        store = require('../../../store/mysql') 
     }
 
     function list() {
@@ -24,13 +24,10 @@ module.exports = function(injectedStore) {
         }
         if (body.id) {
             user.id = body.id
-        } else {
-            user.id = nanoid()
         }
 
         if (body.password || body.username) {
             await auth.upsert({
-                id: user.id,
                 username: user.username,
                 password: body.password,
             })
