@@ -5,6 +5,7 @@ const swaggerUi = require('swagger-ui-express')
 const config = require('../config')
 const auth = require('./components/auth/network')
 const user = require('./components/user/network')
+const post = require('./components/post/network')
 const error = require('../network/errors')
 
 const app = express()
@@ -13,6 +14,7 @@ app.use( bodyParser.json() )
 // Router
 app.use('/api/user', user)
 app.use('/api/auth', auth)
+app.use('/api/post', post)
 
 const swaggerDoc = require('./swagger.json')
 const errors = require('../network/errors')
